@@ -14,7 +14,7 @@ namespace Alura.ListaLeitura.App.Logica
 {
     public class LivrosLogica
     {
-        public static Task ExibeDetalhes(HttpContext context)
+        public static Task Detalhes(HttpContext context)
         {
             int id = Convert.ToInt32(context.GetRouteValue("id"));
 
@@ -25,7 +25,7 @@ namespace Alura.ListaLeitura.App.Logica
             return context.Response.WriteAsync(livro.Detalhes());
         }
 
-        public static Task LivrosParaLer(HttpContext context)
+        public static Task ParaLer(HttpContext context)
         {
             var _repo = new LivroRepositorioCSV();
 
@@ -55,7 +55,7 @@ namespace Alura.ListaLeitura.App.Logica
             return conteudoArquivo.Replace("#NOVO-ITEM", "");
         }
 
-        public static Task LivrosLendo(HttpContext context)
+        public static Task Lendo(HttpContext context)
         {
             var _repo = new LivroRepositorioCSV();
 
@@ -72,7 +72,7 @@ namespace Alura.ListaLeitura.App.Logica
             return context.Response.WriteAsync(fileContent);
         }
 
-        public static Task LivrosLidos(HttpContext context)
+        public static Task Lidos(HttpContext context)
         {
             var _repo = new LivroRepositorioCSV();
             var fileContent = HtmlUtils.CarregaArquivoHTML("lidos");
