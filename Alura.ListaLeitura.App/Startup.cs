@@ -9,18 +9,15 @@ namespace Alura.ListaLeitura.App
     {
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddRouting(); //significa que minha aplicação esta usando serviço de adição de roteamento do asp net core . 
+            //services.AddRouting(); //significa que minha aplicação esta usando serviço de adição de roteamento do asp net core . 
+            //o mvc já utiliza o AddRouting dentro dele
+            services.AddMvc(); //informa a aplicação qeu quero utilizar o framework mvc
         }
 
         public void Configure(IApplicationBuilder app)
         {
-            var builder = new RouteBuilder(app);
-
-            builder.MapRoute("{classe}/{metodo}", RoteamentoPadrao.TratamentoPadrao);
-
-            var rotas = builder.Build();
-
-            app.UseRouter(rotas);
+            app.UseDeveloperExceptionPage();
+            app.UseMvcWithDefaultRoute();
         }        
     }
 }
